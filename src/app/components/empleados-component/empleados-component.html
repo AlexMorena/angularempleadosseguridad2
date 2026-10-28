@@ -1,0 +1,45 @@
+<main class="container py-5">
+  <section class="card border-0 shadow-sm">
+    <div class="card-body p-4 p-md-5">
+      <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center gap-3 mb-4">
+        <div>
+          <h1 class="h2 mb-1">Empleados</h1>
+          <p class="text-body-secondary mb-0">Listado de todos los empleados.</p>
+        </div>
+        <button type="button" class="btn btn-outline-primary" (click)="volverMenu()">
+          Volver al menú
+        </button>
+      </div>
+
+      @if(empleados){
+        <div class="table-responsive">
+          <table class="table table-hover table-striped align-middle mb-0">
+            <thead class="table-light">
+              <tr>
+                <th scope="col">ID Empleado</th>
+                <th scope="col">Apellido</th>
+                <th scope="col">Oficio</th>
+                <th scope="col" class="text-end">Salario</th>
+              </tr>
+            </thead>
+            <tbody>
+              @for(sub of empleados;track sub){
+                <tr>
+                  <td>{{sub.idEmpleado}}</td>
+                  <td>{{sub.apellido}}</td>
+                  <td>{{sub.oficio}}</td>
+                  <td class="text-end">{{sub.salario}}</td>
+                </tr>
+              }
+            </tbody>
+          </table>
+        </div>
+      }@else {
+        <div class="d-flex align-items-center gap-3 text-body-secondary py-3" role="status">
+          <span class="spinner-border spinner-border-sm text-primary" aria-hidden="true"></span>
+          <span>Cargando empleados...</span>
+        </div>
+      }
+    </div>
+  </section>
+</main>

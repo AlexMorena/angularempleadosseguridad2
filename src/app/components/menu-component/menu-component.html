@@ -1,0 +1,32 @@
+<main class="container py-5">
+  <section class="card border-0 shadow-sm mx-auto" style="max-width: 42rem;">
+    <div class="card-body p-4 p-md-5">
+      <span class="badge text-bg-primary mb-3">Área privada</span>
+      <h1 class="h2 mb-2">Menú principal</h1>
+      <p class="text-body-secondary mb-4">Bienvenido. Selecciona una opción:</p>
+
+      <nav aria-label="Navegación principal">
+        <div class="list-group">
+          <a routerLink="/perfil" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+            Ver mi perfil
+            <span class="text-body-secondary" aria-hidden="true">&rarr;</span>
+          </a>
+          <a routerLink="/subordinados" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+            Ver mis subordinados
+            <span class="text-body-secondary" aria-hidden="true">&rarr;</span>
+          </a>
+          <a routerLink="/empleados" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+            Ver todos los empleados
+            <span class="text-body-secondary" aria-hidden="true">&rarr;</span>
+          </a>
+        </div>
+      </nav>
+
+      <div class="border-top mt-4 pt-4">
+        <button type="button" class="btn btn-outline-danger" (click)="cerrarSesion()">
+          Cerrar sesión
+        </button>
+      </div>
+    </div>
+  </section>
+</main>
