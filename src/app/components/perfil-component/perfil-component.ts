@@ -19,7 +19,7 @@ export class PerfilComponent implements OnInit{
   ){}
 
   volverMenu(): void {
-    this._router.navigate(['/menu']);
+    this._router.navigate(['/']);
   }
 
   ngOnInit(): void {

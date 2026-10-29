@@ -10,6 +10,9 @@ import { MenuComponent } from './components/menu-component/menu-component';
 import { PerfilComponent } from './components/perfil-component/perfil-component';
 import { SubordinadosComponent } from './components/subordinados-component/subordinados-component';
 import { EmpleadosComponent } from './components/empleados-component/empleados-component';
+import { ContadorComponent } from './components/contador-component/contador-component';
+import { AuthGuard } from './guards/auth.guard';
+import { HomeComponent } from './components/home-component/home-component';
 
 @NgModule({
   declarations: [
@@ -19,9 +22,16 @@ import { EmpleadosComponent } from './components/empleados-component/empleados-c
     PerfilComponent,
     SubordinadosComponent,
     EmpleadosComponent,
+    ContadorComponent,
+    HomeComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule],
-  providers: [provideBrowserGlobalErrorListeners(), provideHttpClient(), ServiceEmpleados],
+  providers: [
+    AuthGuard,
+    provideBrowserGlobalErrorListeners(),
+    provideHttpClient(),
+    ServiceEmpleados,
+  ],
   bootstrap: [App],
 })
 export class AppModule {}

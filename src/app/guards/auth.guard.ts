@@ -1,19 +1,21 @@
-import { inject } from '@angular/core';
-import { Router, CanActivateFn } from '@angular/router';
+import { Injectable } from '@angular/core';
+import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, Router, GuardResult, MaybeAsync } from '@angular/router';
 
-export const authGuard: CanActivateFn = (route, state) => {
-  // Inyectamos el Router para redirigir si es necesario
-  const router = inject(Router);
-  
-  // Comprobamos si existe el token en el almacenamiento
-  const token = localStorage.getItem('authToken');
+@Injectable()
+export class AuthGuard implements CanActivate {
 
-  if (token) {
-    // Si hay token, devolvemos true y le dejamos entrar a la ruta
-    return true;
-  } else {
-    // Si no hay token, lo mandamos al Login de una patada y devolvemos false
-    router.navigate(['/']);
-    return false;
+  constructor(private _router: Router){}
+
+  canActivate(
+    route: ActivatedRouteSnapshot,
+    state: RouterStateSnapshot
+  ): MaybeAsync<GuardResult> {
+    if (sessionStorage.getItem("TOKEN")) {
+      return true;
+    } else {
+      return this._router.createUrlTree(['/login'],
+        { queryParams: { returnUrl: state.url } }
+      );
+    }
   }
-};
+}
